@@ -1,9 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
-html, body {
-    background: ${({ theme }) => theme.primary}
-}
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -61,4 +58,20 @@ table {
 	border-spacing: 0;
 }
 
+html {
+	width: 100%;
+}
+
+html, body {
+	background: ${({ theme }) => theme.primary};
+	height: 100%;
+	min-height: 100vh;
+}
+
+body {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 2rem;
+	box-sizing: border-box;
+}
 `;

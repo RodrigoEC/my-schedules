@@ -6,7 +6,7 @@ export const Switch = () => {
 
     return (
         <Wrapper onClick={handleSwitch}>
-            <InnerWrapper active={isActive}/>
+            <InnerWrapper active={isActive}/>            
         </Wrapper>
     )
 }

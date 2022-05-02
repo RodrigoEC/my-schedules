@@ -20,7 +20,7 @@ const themeLight= {
 
 const themeDark = {
     primary: colors.darkBlue,
-    secondary: colors.lightPinks,
+    secondary: colors.lightPink,
     third: colors.lightGreen,
     font: colors.lightPink,
 }
