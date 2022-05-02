@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { colors } from "../../context/theme";
 
 export const Wrapper = styled.div`
     width: 3.5rem;

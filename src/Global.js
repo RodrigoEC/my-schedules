@@ -21,7 +21,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-	font-family: 'Roboto', sans-serif !important;
+	font-family: 'Patrick Hand', cursive;
     color: ${({ theme }) => theme.secondary};
 	transition: 0.3s background, fill;
 }
@@ -62,16 +62,18 @@ html {
 	width: 100%;
 }
 
-html, body {
+html, body, #root, .App  {
 	background: ${({ theme }) => theme.primary};
-	height: 100%;
 	min-height: 100vh;
 }
 
-body {
-	max-width: 1200px;
-	margin: 0 auto;
+.App {
+	height: 100%;
 	padding: 2rem;
 	box-sizing: border-box;
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+    flex-direction: column;
 }
 `;
