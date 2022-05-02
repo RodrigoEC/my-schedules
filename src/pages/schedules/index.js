@@ -4,7 +4,7 @@ import { Body, Footer, Header, Title, TitleContainer, Wrapper } from "./styles"
 
 export const Schedules = () => {
     return (
-        <>
+        <Wrapper>
             <Header>
                 <Logo />
                 <Switch />
@@ -18,6 +18,6 @@ export const Schedules = () => {
             <Footer>
 
             </Footer>
-        </>
+        </Wrapper>
     )
 };

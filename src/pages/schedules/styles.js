@@ -4,12 +4,15 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     min-height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 
 `;
 
 export const Header = styled.header`
     display: flex;
     justify-content: space-between;
+    align-items: center;
 `;
 
 export const Body = styled.main`
@@ -23,6 +26,10 @@ export const Title = styled.h1`
     color: ${({ theme }) => theme.third};
     text-transform: uppercase;
     letter-spacing: 4px;
+
+    @media (max-width: 550px) {
+        font-size: 24px;
+    }
 `;
 
 export const TitleContainer = styled.div`

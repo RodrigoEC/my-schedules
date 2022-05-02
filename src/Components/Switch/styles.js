@@ -11,6 +11,11 @@ export const Wrapper = styled.div`
     box-sizing: border-box;
     cursor: pointer;
     transition: 0.2s;
+
+    @media (max-width: 550px) {
+        width: 3rem;
+        height: 1.5rem;
+    }
 `;
     
 export const InnerWrapper = styled.div`
@@ -21,4 +26,10 @@ export const InnerWrapper = styled.div`
     border-radius: 100px;
     transform: translateX(${({ active }) => active ? '1.7rem' : ''});
     transition: 0.2s;
+
+    @media (max-width: 550px) {
+        height: 1rem;
+        width: 1rem;
+        transform: translateX(${({ active }) => active ? '1.5rem' : ''});
+    }
 `;

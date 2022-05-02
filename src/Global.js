@@ -23,6 +23,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 	font-family: 'Patrick Hand', cursive;
     color: ${({ theme }) => theme.secondary};
+	background: ${({ theme }) => theme.primary};
 	transition: 0.3s background, fill;
 }
 
@@ -65,15 +66,14 @@ html {
 html, body, #root, .App  {
 	background: ${({ theme }) => theme.primary};
 	min-height: 100vh;
+	width: 100%;
 }
 
 .App {
 	height: 100%;
+	width: 100%;
 	padding: 2rem;
 	box-sizing: border-box;
-	max-width: 1200px;
-	margin: 0 auto;
-	display: flex;
-    flex-direction: column;
+	transition: 0.3s background;
 }
 `;
