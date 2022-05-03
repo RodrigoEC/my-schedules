@@ -1,8 +1,9 @@
 import { CategoryInput } from "../../Components/CategoryInput";
+import { CategoryTag } from "../../Components/CategoryTag";
 import { Logo } from "../../Components/icons/Logo"
 import { Switch } from "../../Components/Switch"
 import { useContent } from "../../context/content";
-import { Body, Footer, Header, Title, TitleContainer, Wrapper } from "./styles"
+import { Body, Footer, Header, Title, TitleContainer, Wrapper, TagsContainer } from "./styles"
 
 export const Schedules = () => {
     const { schema } = useContent();
@@ -18,12 +19,13 @@ export const Schedules = () => {
                     <Title>Categorias</Title>
                 </TitleContainer>
                 <CategoryInput />
-
-                {
-                    schema['Categoria'].multi_select.options.map((option) => {
-                        return <div>{option.name}</div>
-                    })
-                }
+                <TagsContainer>
+                    {
+                        schema['Categoria'].multi_select.options.map((option) => {
+                            return <CategoryTag title={option.name} backColor={option.color} />
+                        })
+                    }
+                </TagsContainer>
             </Body>
             <Footer>
 

@@ -44,3 +44,11 @@ export const TitleContainer = styled.div`
 `;
 
 export const Footer = styled.footer``;
+
+
+export const TagsContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+`;

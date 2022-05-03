@@ -18,12 +18,15 @@ export const CategoryInput = () => {
     const value = e.target.value;
     setCategory(value);
     setDisabled(value !== "" && value !== undefined ? false : true);
-    
+  };
+
+  const handleEnter = (e) => {
     if (e.keyCode === 13) {
       handleCreate();
-      e.target.value = '';
+      e.target.value = null;
     }
   };
+
 
   const handleCreate = async () => {
     setLoading(true);
@@ -46,7 +49,7 @@ export const CategoryInput = () => {
           onChange={(e) => setColor(e.target.value)}
         />
       </InputColor>
-      <Input placeholder="Ex: monitoria" onKeyDown={handleChange} />
+      <Input placeholder="Ex: monitoria" onChange={handleChange} onKeyDown={handleEnter} />
 
       {loading ? (
         <ActiveLoading>
