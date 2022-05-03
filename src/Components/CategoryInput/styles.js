@@ -70,6 +70,7 @@ export const ActiveLoading = styled.div`
   animation: spin 2s linear infinite;
   background: transparent;
   opacity: 0.4;
+  transition: 0.2s;
 
   @keyframes spin {
     0% {

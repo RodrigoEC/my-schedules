@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   background: transparent;
+  transition: 0.2s;
 
   &.disabled {
     cursor: not-allowed;

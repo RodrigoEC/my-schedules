@@ -45,7 +45,7 @@ export const updateSchema = async (properties, repeated) => {
       },
       {
         headers: {
-          Authorization: `Bearer secret_q6DGd4RgapfI9zAoHIqZy5foqcMch9itfDJsJFvg2m9`,
+          Authorization: `Bearer ${process.env.REACT_APP_NOTION_API_KEY}`,
           "Notion-Version": "2021-08-16",
           "Content-Type": "application/json",
         },
@@ -54,7 +54,7 @@ export const updateSchema = async (properties, repeated) => {
     return response;
   } catch (e) {
     console.log("Erro ao recuperar infos...");
-    if (!repeated) getDatabaseSchema(true);
+    if (!repeated) getDatabaseSchema(properties, true);
     return null;
   }
 };
@@ -68,7 +68,7 @@ export const updatePage = async (pageId, properties) => {
       },
       {
         headers: {
-          Authorization: `Bearer secret_q6DGd4RgapfI9zAoHIqZy5foqcMch9itfDJsJFvg2m9`,
+          Authorization: `Bearer ${process.env.REACT_APP_NOTION_API_KEY}`,
           "Notion-Version": "2021-08-16",
           "Content-Type": "application/json",
         },

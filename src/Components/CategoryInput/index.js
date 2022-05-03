@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { colors } from "../../constantes/notion-colors";
 import { useContent } from "../../context/content";
 import { updateSchema } from "../../services/notion";
+import { getRandomInt } from "../../util/util";
 import { Cross } from "../icons/Cross";
 import { Loading } from "../icons/Loading";
 import { ActiveLoading, Input, InputColor, Wrapper } from "./styles";
@@ -10,29 +12,29 @@ export const CategoryInput = () => {
   const [category, setCategory] = useState("#FF7878");
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
-  const { schema } = useContent();
+  const { schema, getSchemaData, loadingSchema } = useContent();
 
   const handleChange = (e) => {
     const value = e.target.value;
-    setDisabled(value !== "" && value !== undefined ? false : true);
-
     setCategory(value);
+    setDisabled(value !== "" && value !== undefined ? false : true);
+    
+    if (e.keyCode === 13) {
+      handleCreate();
+      e.target.value = '';
+    }
   };
 
-  console.log(schema);
   const handleCreate = async () => {
     setLoading(true);
-    const updatedOptions = schema["Categoria"].multi_select.options.map(
-      (option) => {
-        return { name: option.name, color: option.color };
-      }
-    );
+    const newElementColor = Object.keys(colors)[getRandomInt(0, 6)];
 
-    updatedOptions.push({ name: category });
-    await updateSchema({
-      Categoria: { multi_select: { options: updatedOptions, color: color } },
-    });
+    schema["Categoria"].multi_select.options.push({ name: category, color: newElementColor });
+    
+    const body = { Categoria: schema["Categoria"] };
+    await updateSchema(body);
     setLoading(false);
+    getSchemaData();
   };
 
   return (
@@ -44,7 +46,7 @@ export const CategoryInput = () => {
           onChange={(e) => setColor(e.target.value)}
         />
       </InputColor>
-      <Input placeholder="Ex: monitoria" onChange={handleChange} />
+      <Input placeholder="Ex: monitoria" onKeyDown={handleChange} />
 
       {loading ? (
         <ActiveLoading>

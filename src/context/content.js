@@ -5,6 +5,7 @@ const ContentContext = createContext();
 
 export default function ContentProvider({ children }) {
   const [loading, setLoading] = useState(false);
+  const [loadingSchema, lsetLadingSchema] = useState(false);
   const [failed, setFailed] = useState(false);
   const [listElementsRaw, setListElementsRaw] = useState([]);
   const [listElements, setListElements] = useState({});
@@ -36,6 +37,20 @@ export default function ContentProvider({ children }) {
   };
 
   const getListData = async () => {
+    lsetLadingSchema(true);
+
+    const schema = await getDatabaseSchema();
+    
+    if (!schema) {
+      setFailed(true);
+    } else {
+      lsetLadingSchema(schema.properties);
+      setFailed(false);
+    }
+    setLoading(false);
+  };
+
+  const getSchemaData = async () => {
     setLoading(true);
 
     const listData = await getListDatabase();
@@ -47,7 +62,7 @@ export default function ContentProvider({ children }) {
       setFailed(false);
     }
     setLoading(false);
-  };
+  }
 
   const value = {
     loading,
@@ -67,6 +82,8 @@ export default function ContentProvider({ children }) {
     currentModalElement,
     setCurrentModalElement,
     handleModalElement,
+    getSchemaData,
+    loadingSchema,
   };
 
   useEffect(() => {
