@@ -7,6 +7,8 @@ export const colors = {
     lightPink: '#FFF9F4',
     lightGreen: '#C3DF89',
     darkGreen: '#8EAD4E',
+    darkGrey: '#959595',
+    white: '#ffffff',
 }
 
 const ThemeContext = createContext()
@@ -15,6 +17,7 @@ const themeLight= {
     primary: colors.lightPink,
     secondary: colors.darkBlue,
     third: colors.darkGreen,
+    forth: colors.darkGrey,
     font: colors.darkBlue,
 }
 
@@ -22,6 +25,7 @@ const themeDark = {
     primary: colors.darkBlue,
     secondary: colors.lightPink,
     third: colors.lightGreen,
+    forth: colors.white,
     font: colors.lightPink,
 }
 

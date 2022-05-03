@@ -18,6 +18,10 @@ export const Header = styled.header`
 export const Body = styled.main`
     flex-grow: 11;
     margin-top: 4rem;
+    display: flex;
+    gap: 1.5rem;
+    flex-direction: column;
+    align-items: center;
 `;
 
 export const Title = styled.h1`
