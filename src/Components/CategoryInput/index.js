@@ -12,7 +12,7 @@ export const CategoryInput = () => {
   const [category, setCategory] = useState("#FF7878");
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
-  const { schema, getSchemaData, loadingSchema } = useContent();
+  const { schema, getSchemaData } = useContent();
 
   const handleChange = (e) => {
     const value = e.target.value;

@@ -5,12 +5,18 @@ const ContentContext = createContext();
 
 export default function ContentProvider({ children }) {
   const [loading, setLoading] = useState(false);
-  const [loadingSchema, lsetLadingSchema] = useState(false);
+  const [loadingSchema, setLoadingSchema] = useState(false);
   const [failed, setFailed] = useState(false);
   const [listElementsRaw, setListElementsRaw] = useState([]);
   const [listElements, setListElements] = useState({});
   const [activeModal, setActiveModal] = useState(false);
-  const [schema, setSchema] = useState({});
+  const [schema, setSchema] = useState({
+    'Categoria': {
+      multi_select: {
+        options: []
+      }
+    },
+  });
   const [currentModalElement, setCurrentModalElement] = useState();
 
   const formatElementsList = (listData) => {
@@ -37,14 +43,14 @@ export default function ContentProvider({ children }) {
   };
 
   const getListData = async () => {
-    lsetLadingSchema(true);
+    setLoadingSchema(true);
 
     const schema = await getDatabaseSchema();
-    
+
     if (!schema) {
       setFailed(true);
     } else {
-      lsetLadingSchema(schema.properties);
+      setLoadingSchema(schema.properties);
       setFailed(false);
     }
     setLoading(false);
@@ -62,7 +68,7 @@ export default function ContentProvider({ children }) {
       setFailed(false);
     }
     setLoading(false);
-  }
+  };
 
   const value = {
     loading,
