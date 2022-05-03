@@ -9,7 +9,15 @@ export const CategoryInput = () => {
   const [color, setColor] = useState("#FF7878");
   const [category, setCategory] = useState("#FF7878");
   const [loading, setLoading] = useState(false);
+  const [disabled, setDisabled] = useState(true);
   const { schema } = useContent();
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setDisabled(value !== "" && value !== undefined ? false : true);
+
+    setCategory(value);
+  };
 
   console.log(schema);
   const handleCreate = async () => {
@@ -36,17 +44,14 @@ export const CategoryInput = () => {
           onChange={(e) => setColor(e.target.value)}
         />
       </InputColor>
-      <Input
-        placeholder="Ex: monitoria"
-        onChange={(e) => setCategory(e.target.value)}
-      />
+      <Input placeholder="Ex: monitoria" onChange={handleChange} />
 
       {loading ? (
         <ActiveLoading>
           <Loading />
         </ActiveLoading>
       ) : (
-        <Cross onClick={handleCreate} />
+        <Cross onClick={handleCreate} className={disabled ? "disabled" : ""} />
       )}
     </Wrapper>
   );
