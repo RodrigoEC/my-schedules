@@ -3,7 +3,7 @@ import { Wrapper } from "./styles";
 
 export const CategoryTag = ({ title, backColor }) => {
   return (
-    <Wrapper color={colors[backColor]}>
+    <Wrapper color={colors[backColor]} draggable={true}>
       <p>{title}</p>
     </Wrapper>
   );

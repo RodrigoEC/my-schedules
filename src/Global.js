@@ -65,12 +65,10 @@ html {
 
 html, body, #root, .App  {
 	background: ${({ theme }) => theme.primary};
-	min-height: 100vh;
-	width: 100%;
+	height: 100%;
 }
 
 .App {
-	height: 100%;
 	width: 100%;
 	padding: 2rem;
 	box-sizing: border-box;
