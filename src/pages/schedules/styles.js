@@ -56,7 +56,8 @@ export const TagsInner = styled.div`
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
-  width: 100%;
+  width: calc(100% + 2rem);
+  list-style-type: none;
 
   @media (max-width: 550px) {
     overflow: scroll;
@@ -64,6 +65,11 @@ export const TagsInner = styled.div`
     flex-wrap: nowrap;
     justify-content: start;
     ::-webkit-scrollbar {display:none;}
+
+    div.category-tag:last-child {
+        margin-right: 2rem;
+    }
+    
   }
 `;
 
