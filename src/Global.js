@@ -69,7 +69,7 @@ html, body, #root, .App  {
 }
 
 .App {
-	width: 100%;
+	overflow: hidden;
 	padding: 2rem;
 	box-sizing: border-box;
 	transition: 0.3s background;

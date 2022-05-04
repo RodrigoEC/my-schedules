@@ -46,9 +46,25 @@ export const TitleContainer = styled.div`
 
 export const TagsContainer = styled.div`
   display: flex;
+  position: relative;
+  justify-content: flex-start;
+  width: 100%;
+`;
+
+export const TagsInner = styled.div`
+  display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
+  width: 100%;
+
+  @media (max-width: 550px) {
+    overflow: scroll;
+    position: absolute;
+    flex-wrap: nowrap;
+    justify-content: start;
+    ::-webkit-scrollbar {display:none;}
+  }
 `;
 
 export const Footer = styled.footer`
@@ -65,11 +81,11 @@ export const ContributeContainer = styled.div`
   gap: 0.5rem;
 
   p {
-      font-size: 12px;
+    font-size: 12px;
   }
 
   #github {
-      cursor: pointer;
+    cursor: pointer;
   }
 
   #github:hover {

@@ -14,6 +14,7 @@ import {
   Logout,
   TagsContainer,
   ContributeContainer,
+  TagsInner,
 } from "./styles";
 
 export const Schedules = () => {
@@ -31,9 +32,13 @@ export const Schedules = () => {
         </TitleContainer>
         <CategoryInput />
         <TagsContainer>
-          {schema["Categoria"].multi_select.options.map((option) => {
-            return <CategoryTag title={option.name} backColor={option.color} />;
-          })}
+          <TagsInner>
+            {schema["Categoria"].multi_select.options.map((option) => {
+              return (
+                <CategoryTag title={option.name} backColor={option.color} />
+              );
+            })}
+          </TagsInner>
         </TagsContainer>
       </Body>
       <Footer>
