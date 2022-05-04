@@ -63,12 +63,13 @@ export const TagsInner = styled.div`
     position: absolute;
     flex-wrap: nowrap;
     justify-content: start;
-    ::-webkit-scrollbar {display:none;}
+    ::-webkit-scrollbar {
+      display: none;
+    }
 
     div.category-tag:last-child {
-        margin-right: 2rem;
+      margin-right: 2rem;
     }
-    
   }
 `;
 

@@ -73,5 +73,6 @@ html, body, #root, .App  {
 	padding: 2rem;
 	box-sizing: border-box;
 	transition: 0.3s background;
+	min-height: 50rem;
 }
 `;
