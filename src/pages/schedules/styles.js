@@ -57,7 +57,6 @@ export const TagsInner = styled.div`
   gap: 1rem;
   justify-content: center;
   width: calc(100% + 2rem);
-  list-style-type: none;
 
   @media (max-width: 550px) {
     overflow: scroll;
