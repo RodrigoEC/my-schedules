@@ -1,10 +1,8 @@
+import { CategoriesList } from "../../Components/CategoriesList";
 import { CategoryInput } from "../../Components/CategoryInput";
-import { CategoryTag } from "../../Components/CategoryTag";
 import { Github } from "../../Components/icons/Github";
-import { Loading } from "../../Components/icons/Loading";
 import { Logo } from "../../Components/icons/Logo";
 import { Switch } from "../../Components/Switch";
-import { useContent } from "../../context/content";
 import {
   Body,
   Footer,
@@ -13,16 +11,10 @@ import {
   TitleContainer,
   Wrapper,
   Logout,
-  TagsContainer,
   ContributeContainer,
-  TagsInner,
-  ActiveLoading,
-  LoadingContainer,
 } from "./styles";
 
 export const Schedules = () => {
-  const { schema, loading } = useContent();
-
   return (
     <Wrapper>
       <Header>
@@ -34,28 +26,7 @@ export const Schedules = () => {
           <Title>Categorias</Title>
         </TitleContainer>
         <CategoryInput />
-        <TagsContainer loading={loading.toString()}>
-          {loading ? (
-            <LoadingContainer>
-              <ActiveLoading>
-                <Loading />
-              </ActiveLoading>
-              <p>Carregando categorias..</p>
-            </LoadingContainer>
-          ) : (
-            <TagsInner>
-              {schema["Categoria"].multi_select.options.map((option, index) => {
-                return (
-                  <CategoryTag
-                    key={index}
-                    title={option.name}
-                    backColor={option.color}
-                  />
-                );
-              })}
-            </TagsInner>
-          )}
-        </TagsContainer>
+        <CategoriesList />
       </Body>
       <Footer>
         <ContributeContainer>
