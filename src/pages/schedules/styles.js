@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Github } from "../../Components/icons/Github";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -47,7 +46,8 @@ export const TitleContainer = styled.div`
 export const TagsContainer = styled.div`
   display: flex;
   position: relative;
-  justify-content: flex-start;
+  justify-content: ${({ loading }) =>
+    Boolean(loading) ? "center" : "flex-start"};
   width: 100%;
 `;
 
@@ -113,8 +113,8 @@ export const ActiveLoading = styled.div`
   animation: spin 1s linear infinite;
   background: transparent;
   transition: 0.2s;
-  opacity: 0.4;
   margin: 0 auto;
+  width: fit-content;
 
   @keyframes spin {
     0% {
@@ -128,5 +128,16 @@ export const ActiveLoading = styled.div`
     100% {
       transform: rotate(-360deg);
     }
+  }
+`;
+
+export const LoadingContainer = styled.div`
+  display: flex;
+  flex-flow: column;
+  gap: 0.5rem;
+  opacity: 0.5;
+
+  p {
+    color: ${({ theme }) => theme.third};
   }
 `;

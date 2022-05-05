@@ -17,6 +17,7 @@ import {
   ContributeContainer,
   TagsInner,
   ActiveLoading,
+  LoadingContainer,
 } from "./styles";
 
 export const Schedules = () => {
@@ -33,16 +34,23 @@ export const Schedules = () => {
           <Title>Categorias</Title>
         </TitleContainer>
         <CategoryInput />
-        <TagsContainer>
+        <TagsContainer loading={loading.toString()}>
           {loading ? (
-            <ActiveLoading>
-              <Loading />
-            </ActiveLoading>
+            <LoadingContainer>
+              <ActiveLoading>
+                <Loading />
+              </ActiveLoading>
+              <p>Carregando categorias..</p>
+            </LoadingContainer>
           ) : (
             <TagsInner>
-              {schema["Categoria"].multi_select.options.map((option) => {
+              {schema["Categoria"].multi_select.options.map((option, index) => {
                 return (
-                  <CategoryTag title={option.name} backColor={option.color} />
+                  <CategoryTag
+                    key={index}
+                    title={option.name}
+                    backColor={option.color}
+                  />
                 );
               })}
             </TagsInner>
