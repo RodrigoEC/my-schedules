@@ -1,6 +1,7 @@
 import { CategoryInput } from "../../Components/CategoryInput";
 import { CategoryTag } from "../../Components/CategoryTag";
 import { Github } from "../../Components/icons/Github";
+import { Loading } from "../../Components/icons/Loading";
 import { Logo } from "../../Components/icons/Logo";
 import { Switch } from "../../Components/Switch";
 import { useContent } from "../../context/content";
@@ -15,10 +16,11 @@ import {
   TagsContainer,
   ContributeContainer,
   TagsInner,
+  ActiveLoading,
 } from "./styles";
 
 export const Schedules = () => {
-  const { schema } = useContent();
+  const { schema, loading } = useContent();
 
   return (
     <Wrapper>
@@ -32,13 +34,19 @@ export const Schedules = () => {
         </TitleContainer>
         <CategoryInput />
         <TagsContainer>
-          <TagsInner>
-            {schema["Categoria"].multi_select.options.map((option) => {
-              return (
-                <CategoryTag title={option.name} backColor={option.color} />
-              );
-            })}
-          </TagsInner>
+          {loading ? (
+            <ActiveLoading>
+              <Loading />
+            </ActiveLoading>
+          ) : (
+            <TagsInner>
+              {schema["Categoria"].multi_select.options.map((option) => {
+                return (
+                  <CategoryTag title={option.name} backColor={option.color} />
+                );
+              })}
+            </TagsInner>
+          )}
         </TagsContainer>
       </Body>
       <Footer>

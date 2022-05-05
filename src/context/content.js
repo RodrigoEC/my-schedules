@@ -11,10 +11,10 @@ export default function ContentProvider({ children }) {
   const [listElements, setListElements] = useState({});
   const [activeModal, setActiveModal] = useState(false);
   const [schema, setSchema] = useState({
-    'Categoria': {
+    Categoria: {
       multi_select: {
-        options: []
-      }
+        options: [],
+      },
     },
   });
   const [currentModalElement, setCurrentModalElement] = useState();
@@ -42,7 +42,7 @@ export default function ContentProvider({ children }) {
     element && setActiveModal(true);
   };
 
-  const getListData = async () => {
+  const getSchemaData = async () => {
     setLoadingSchema(true);
 
     const schema = await getDatabaseSchema();
@@ -50,13 +50,13 @@ export default function ContentProvider({ children }) {
     if (!schema) {
       setFailed(true);
     } else {
-      setLoadingSchema(schema.properties);
+      setSchema(schema.properties);
       setFailed(false);
     }
-    setLoading(false);
+    setLoadingSchema(false);
   };
 
-  const getSchemaData = async () => {
+  const getListData = async () => {
     setLoading(true);
 
     const listData = await getListDatabase();

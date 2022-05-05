@@ -108,3 +108,25 @@ export const Logout = styled.p`
     opacity: 0.4;
   }
 `;
+
+export const ActiveLoading = styled.div`
+  animation: spin 1s linear infinite;
+  background: transparent;
+  transition: 0.2s;
+  opacity: 0.4;
+  margin: 0 auto;
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    50% {
+      transform: rotate(-180deg);
+    }
+
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+`;
