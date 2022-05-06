@@ -11,6 +11,8 @@ import {
 export const CategoriesList = () => {
   const { schema, loading } = useContent();
 
+  console.log(typeof Boolean(loading.toString()));
+
   return (
     <TagsContainer loading={loading.toString()}>
       {loading ? (

@@ -13,6 +13,7 @@ export const TagsInner = styled.div`
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
+  margin-left: 2rem;
   width: calc(100% + 2rem);
 
   @media (max-width: 550px) {
