@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Loading as DefaultLoading } from "../../Components/icons/Loading";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -41,6 +42,12 @@ export const TitleContainer = styled.div`
   border-bottom: 2px solid ${({ theme }) => theme.third};
   width: fit-content;
   margin: 0 auto;
+`;
+
+export const InputContainer = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 `;
 
 export const Footer = styled.footer`

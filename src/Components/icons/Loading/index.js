@@ -1,11 +1,11 @@
 import { useTheme } from "../../../context/theme";
 import { Wrapper } from "./styles";
 
-export const Loading = () => {
+export const Loading = (props) => {
   const { theme } = useTheme();
 
   return (
-    <Wrapper className="loading-container">
+    <Wrapper {...props} className="loading-container">
       <svg
         width="24"
         height="24"

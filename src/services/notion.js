@@ -28,7 +28,9 @@ export const getDatabaseSchema = async (repeated) => {
     const response = await notion.databases.retrieve({
       database_id: process.env.REACT_APP_NOTION_DATABASE_ID,
     });
-    return response;
+
+    console.log(response)
+    return null;
   } catch (e) {
     console.log("Erro ao recuperar infos...");
     if (!repeated) getDatabaseSchema(true);

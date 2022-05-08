@@ -9,13 +9,11 @@ import {
 } from "./styles";
 
 export const CategoriesList = () => {
-  const { schema, loading } = useContent();
-
-  console.log(typeof Boolean(loading.toString()));
+  const { schema, loadingSchema } = useContent();
 
   return (
-    <TagsContainer loading={loading.toString()}>
-      {loading ? (
+    <TagsContainer loading={loadingSchema.toString()}>
+      {loadingSchema ? (
         <LoadingContainer>
           <ActiveLoading>
             <Loading />

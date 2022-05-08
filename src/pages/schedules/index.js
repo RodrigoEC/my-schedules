@@ -1,8 +1,10 @@
 import { CategoriesList } from "../../Components/CategoriesList";
 import { CategoryInput } from "../../Components/CategoryInput";
 import { Github } from "../../Components/icons/Github";
+import { Loading } from "../../Components/icons/Loading";
 import { Logo } from "../../Components/icons/Logo";
 import { Switch } from "../../Components/Switch";
+import { useContent } from "../../context/content";
 import {
   Body,
   Footer,
@@ -12,9 +14,16 @@ import {
   Wrapper,
   Logout,
   ContributeContainer,
+  InputContainer,
 } from "./styles";
 
 export const Schedules = () => {
+  const { failed, getSchemaData, getListData } = useContent();
+
+  const handleError = () => {
+    getSchemaData();
+  };
+
   return (
     <Wrapper>
       <Header>
@@ -25,8 +34,10 @@ export const Schedules = () => {
         <TitleContainer>
           <Title>Categorias</Title>
         </TitleContainer>
-        <CategoryInput />
-        <CategoriesList />
+        <InputContainer>
+          <CategoryInput />
+        </InputContainer>
+        {failed ? <Loading onClick={handleError} /> : <CategoriesList />}
       </Body>
       <Footer>
         <ContributeContainer>

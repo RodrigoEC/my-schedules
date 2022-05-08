@@ -44,10 +44,11 @@ export default function ContentProvider({ children }) {
 
   const getSchemaData = async () => {
     setLoadingSchema(true);
-
+    
     const schema = await getDatabaseSchema();
-
+    console.log(!schema)
     if (!schema) {
+      console.log('eh vacas')
       setFailed(true);
     } else {
       setSchema(schema.properties);
@@ -93,15 +94,15 @@ export default function ContentProvider({ children }) {
   };
 
   useEffect(() => {
-    const getSchema = async () => {
-      const schema = await getDatabaseSchema();
-      setSchema(schema.properties);
-    };
-
-    getSchema();
+    getSchemaData();
     getListData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+
+  useEffect(() => {
+    console.log(failed)
+  }, failed)
 
   return (
     <ContentContext.Provider value={value}>{children}</ContentContext.Provider>
