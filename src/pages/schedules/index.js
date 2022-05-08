@@ -18,7 +18,7 @@ import {
 } from "./styles";
 
 export const Schedules = () => {
-  const { failed, getSchemaData, failedSchema } = useContent();
+  const { getSchemaData, failedSchema } = useContent();
 
   const handleError = () => {
     getSchemaData();
