@@ -7,6 +7,7 @@ export default function ContentProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [loadingSchema, setLoadingSchema] = useState(false);
   const [failed, setFailed] = useState(false);
+  const [failedSchema, setFailedSchema] = useState(false);
   const [listElementsRaw, setListElementsRaw] = useState([]);
   const [listElements, setListElements] = useState({});
   const [activeModal, setActiveModal] = useState(false);
@@ -43,21 +44,21 @@ export default function ContentProvider({ children }) {
   };
 
   const getSchemaData = async () => {
+    setFailedSchema(false);
     setLoadingSchema(true);
-    
+
     const schema = await getDatabaseSchema();
-    console.log(!schema)
+
     if (!schema) {
-      console.log('eh vacas')
-      setFailed(true);
+      setFailedSchema(true);
     } else {
       setSchema(schema.properties);
-      setFailed(false);
     }
     setLoadingSchema(false);
   };
 
   const getListData = async () => {
+    setFailed(false);
     setLoading(true);
 
     const listData = await getListDatabase();
@@ -66,7 +67,6 @@ export default function ContentProvider({ children }) {
       setFailed(true);
     } else {
       formatElementsList(listData.results);
-      setFailed(false);
     }
     setLoading(false);
   };
@@ -91,6 +91,7 @@ export default function ContentProvider({ children }) {
     handleModalElement,
     getSchemaData,
     loadingSchema,
+    failedSchema,
   };
 
   useEffect(() => {
@@ -98,11 +99,6 @@ export default function ContentProvider({ children }) {
     getListData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-
-  useEffect(() => {
-    console.log(failed)
-  }, failed)
 
   return (
     <ContentContext.Provider value={value}>{children}</ContentContext.Provider>

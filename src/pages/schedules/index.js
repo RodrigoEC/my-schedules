@@ -18,7 +18,7 @@ import {
 } from "./styles";
 
 export const Schedules = () => {
-  const { failed, getSchemaData, getListData } = useContent();
+  const { failed, getSchemaData, failedSchema } = useContent();
 
   const handleError = () => {
     getSchemaData();
@@ -37,7 +37,7 @@ export const Schedules = () => {
         <InputContainer>
           <CategoryInput />
         </InputContainer>
-        {failed ? <Loading onClick={handleError} /> : <CategoriesList />}
+        {failedSchema ? <Loading clickable onClick={handleError} /> : <CategoriesList />}
       </Body>
       <Footer>
         <ContributeContainer>

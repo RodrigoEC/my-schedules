@@ -29,8 +29,7 @@ export const getDatabaseSchema = async (repeated) => {
       database_id: process.env.REACT_APP_NOTION_DATABASE_ID,
     });
 
-    console.log(response)
-    return null;
+    return response;
   } catch (e) {
     console.log("Erro ao recuperar infos...");
     if (!repeated) getDatabaseSchema(true);
