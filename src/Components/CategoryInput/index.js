@@ -35,6 +35,7 @@ export const CategoryInput = () => {
     schema["Categoria"].multi_select.options.push({ name: category, color: newElementColor });
     
     const body = { Categoria: schema["Categoria"] };
+
     await updateSchema(body);
     setLoading(false);
     getSchemaData();

@@ -92,6 +92,7 @@ export default function ContentProvider({ children }) {
     getSchemaData,
     loadingSchema,
     failedSchema,
+    setLoadingSchema,
   };
 
   useEffect(() => {

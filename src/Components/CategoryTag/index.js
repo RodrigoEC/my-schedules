@@ -5,23 +5,19 @@ import { updateSchema } from "../../services/notion";
 import { Close, Wrapper } from "./styles";
 
 export const CategoryTag = ({ title, backColor }) => {
-  const [loading, setLoading] = useState(false);
-  const { schema, getSchemaData } = useContent();
+  const { schema, getSchemaData, setLoadingSchema } = useContent();
 
   const handleDelete = async () => {
-    setLoading(true);
+    setLoadingSchema(true);
     const categoriesList = schema["Categoria"].multi_select.options.filter(
       (category) => {
         return category.name !== title;
       }
     );
 
-    const body = {
-      Categoria: { multi_select: { options: categoriesList } },
-    };
+    schema["Categoria"].multi_select.options = categoriesList;
 
-    await updateSchema(body);
-    setLoading(false);
+    await updateSchema({ Categoria: schema["Categoria"]});
     getSchemaData();
   };
 
