@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { colors } from "../../constantes/notion-colors";
 import { useContent } from "../../context/content";
 import { updateSchema } from "../../services/notion";
@@ -13,6 +13,7 @@ export const CategoryInput = () => {
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const { schema, getSchemaData } = useContent();
+  const inputRef = useRef(null);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -23,17 +24,20 @@ export const CategoryInput = () => {
   const handleEnter = (e) => {
     if (e.keyCode === 13) {
       handleCreate();
-      e.target.value = null;
     }
   };
 
+  const handleCreate = async (e) => {
+    inputRef.current.value = null;
 
-  const handleCreate = async () => {
     setLoading(true);
     const newElementColor = Object.keys(colors)[getRandomInt(0, 6)];
 
-    schema["Categoria"].multi_select.options.push({ name: category, color: newElementColor });
-    
+    schema["Categoria"].multi_select.options.push({
+      name: category,
+      color: newElementColor,
+    });
+
     const body = { Categoria: schema["Categoria"] };
 
     await updateSchema(body);
@@ -50,7 +54,12 @@ export const CategoryInput = () => {
           onChange={(e) => setColor(e.target.value)}
         />
       </InputColor>
-      <Input placeholder="Ex: monitoria" onChange={handleChange} onKeyDown={handleEnter} />
+      <Input
+        placeholder="Ex: monitoria"
+        ref={inputRef}
+        onChange={handleChange}
+        onKeyDown={handleEnter}
+      />
 
       {loading ? (
         <ActiveLoading>
